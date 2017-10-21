@@ -41,7 +41,7 @@
 		id: 'mapbox.streets'
 	}).addTo(mymap);
 
-  var url="https://opencontext.org/subjects-search/United+States/Virginia.json?response=geo-facet&proj=52-digital-index-of-north-american-archaeology-dinaa&prop=oc-gen-cat-loc-or-context---oc-gen-cat-site&godeep=11";
+  var url="https://opencontext.org/subjects-search/United+States/Virginia||Maryland.json?response=geo-facet&proj=52-digital-index-of-north-american-archaeology-dinaa&prop=oc-gen-cat-loc-or-context---oc-gen-cat-site&godeep=11";
    $.getJSON(url,function(dinaaData){
       // add GeoJSON layer to the map once the file is loaded
       L.geoJson(dinaaData, {
