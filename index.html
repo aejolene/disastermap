@@ -102,7 +102,7 @@
       }).addTo(mymap);
 		});
 
-var stormUrl="https://github.com/aejolene/disastermap/storm_surge_simple.json";
+var stormUrl="https://github.com/aejolene/disastermap/storm_surge_simple.geojson";
 	$.getJSON(stormUrl, function(stormData){
 				L.GeoJSON(stormData).addTo(mymap);
 	});
