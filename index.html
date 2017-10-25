@@ -52,6 +52,7 @@
 			margin: 10px;
 			text-align: left;
 		}
+
     </style>
 
 </head>
@@ -80,7 +81,6 @@
 		id: 'mapbox.streets'
 	}).addTo(mymap);
 
-
 	var url="https://opencontext.org/subjects-search/United+States/Virginia||Maryland.json?response=geo-facet&proj=52-digital-index-of-north-american-archaeology-dinaa&prop=oc-gen-cat-loc-or-context---oc-gen-cat-site&godeep=11";
    $.getJSON(url,function(dinaaData){
       // add GeoJSON layer to the map once the file is loaded
@@ -100,13 +100,12 @@
               layer.bindPopup( "<strong>" + feature.properties.count + "</strong><br/>" + "archaeological sites in this region" )
             }
       }).addTo(mymap);
-		});
-
-var stormUrl="https://github.com/aejolene/disastermap/storm_surge_simple.geojson";
-	$.getJSON(stormUrl, function(stormData){
-				L.GeoJSON(stormData).addTo(mymap);
 	});
 
+	$.getJSON("storm_surge.geojson",function(data){
+		L.geoJson(data)
+		.addTo(mymap);
+	});
 
 //I'm not turning location on snce we'll be demonstrating in MD
 </script>
