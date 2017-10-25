@@ -61,16 +61,21 @@
 
 
 <div id="mapid"></div>
-<div id='titlebox'><h2>Archaeology Disaster Response</h2>
-	<div>
-	<p>Source: <a href="https://opencontext.org/projects-search/?proj=52-digital-index-of-north-american-archaeology-dinaa">Open Context/Digital Index of North American Archaeology</a>
-	</p>
+<div id='titlebox'>﻿
+	<h2 id="archaeology-disaster-response">Archaeology Disaster Response</h2>
+	<p>A demonstration map for Keeping History Above Water Conference, 2017</p
 	</div>
 </div>
 
 <script>
 
-	var mymap = L.map('mapid').setView([37.98, -81.70], 7);
+	var mymap = L.map('mapid').setView([37.98, -76.42], 8);
+
+	var stormStyle = {
+    "color": "red",
+    "weight": 5,
+    "opacity": 0.65
+	};
   //location is map.locate({setView: true, maxZoom: 16});
   //if use this then comment out the other setView
 	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
@@ -88,13 +93,13 @@
         style:function(feature){
           var fillColor
           density=feature.properties.count;
-          if ( density > 500 ) fillColor = "#006837";
-        else if ( density > 100 ) fillColor = "#31a354";
-        else if ( density > 50 ) fillColor = "#78c679";
-        else if ( density > 10 ) fillColor = "#c2e699";
-        else if ( density > 0 ) fillColor = "#ffffcc";
+          if ( density > 500 ) fillColor = "#006d2c";
+        else if ( density > 300 ) fillColor = "#2ca25f";
+        else if ( density > 100 ) fillColor = "#66c2a4";
+        else if ( density > 50 ) fillColor = "#b2e2e2";
+        else if ( density > 0 ) fillColor = "#edf8fb";
         else fillColor = "#f7f7f7";  // no data
-        return { color: "#999", weight: 1, fillColor: fillColor, fillOpacity: .6 };
+        return { color: "#999", weight: 1, fillColor: fillColor, fillOpacity: .3 };
       },
       onEachFeature: function( feature, layer ){
               layer.bindPopup( "<strong>" + feature.properties.count + "</strong><br/>" + "archaeological sites in this region" )
@@ -102,10 +107,13 @@
       }).addTo(mymap);
 	});
 
-	$.getJSON("storm_surge.geojson",function(data){
-		L.geoJson(data)
+var stormSurge = $.getJSON("storm_surge.geojson",function(data){
+		L.geoJson(data, {
+			style:stormStyle
+		})
 		.addTo(mymap);
 	});
+
 
 //I'm not turning location on snce we'll be demonstrating in MD
 </script>
