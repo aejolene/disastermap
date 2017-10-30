@@ -86,7 +86,7 @@
 		id: 'mapbox.streets'
 	}).addTo(mymap);
 
-	var url="https://opencontext.org/subjects-search/United+States/Virginia||Maryland.json?response=geo-facet&proj=52-digital-index-of-north-american-archaeology-dinaa&prop=oc-gen-cat-loc-or-context---oc-gen-cat-site&godeep=11";
+	/*var url="https://opencontext.org/subjects-search/United+States/Virginia||Maryland.json?response=geo-facet&proj=52-digital-index-of-north-american-archaeology-dinaa&prop=oc-gen-cat-loc-or-context---oc-gen-cat-site&godeep=11";
    $.getJSON(url,function(dinaaData){
       // add GeoJSON layer to the map once the file is loaded
       L.geoJson(dinaaData, {
@@ -105,14 +105,60 @@
               layer.bindPopup( "<strong>" + feature.properties.count + "</strong><br/>" + "archaeological sites in this region" )
             }
       }).addTo(mymap);
+	}); */
+	var OpenStreetMap_DE = L.tileLayer('http://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png', {
+	    maxZoom: 18,
+	    attribution: '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 	});
 
-var stormSurge = $.getJSON("storm_surge.geojson",function(data){
+	var Stamen_TonerLite = L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.{ext}', {
+	    attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> — Map data © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+	    subdomains: 'abcd',
+	    minZoom: 0,
+	    maxZoom: 20,
+	    ext: 'png'
+	});
+
+	var siteCounts = new L.layerGroup().addTo(mymap);
+	var stormSurge = new L.layerGroup().addTo(mymap);
+
+	var siteCountsData = $.getJSON("va-md-statuses.json",function(data){
+				L.geoJson(data, {
+	        style:function(feature){
+	          var fillColor
+	          density=feature.properties.count;
+	          if ( density > 500 ) fillColor = "#006d2c";
+	        else if ( density > 300 ) fillColor = "#2ca25f";
+	        else if ( density > 100 ) fillColor = "#66c2a4";
+	        else if ( density > 50 ) fillColor = "#b2e2e2";
+	        else if ( density > 0 ) fillColor = "#edf8fb";
+	        else fillColor = "#f7f7f7";  // no data
+	        return { color: "#999", weight: 1, fillColor: fillColor, fillOpacity: .3 };
+	      },
+	      onEachFeature: function( feature, layer ){
+	              layer.bindPopup( "<strong>" + feature.properties.count + "</strong>" + " archaeological sites in this region" + "</br>" + "<strong>" + feature.properties.count + "</strong>" + " sites eligible for NRHP listing")
+	            }
+						})
+				.addTo(siteCounts);
+			});
+
+var stormSurgeData = $.getJSON("storm_surge.geojson",function(data){
 		L.geoJson(data, {
 			style:stormStyle
 		})
-		.addTo(mymap);
+		.addTo(stormSurge);
 	});
+
+	var toggleMaps = {
+	    "OSM DE": OpenStreetMap_DE,
+	    "Stamen Toner Lite": Stamen_TonerLite
+	}
+	var overlayMaps = {
+    "Archaeological Sites": siteCounts,
+    "Cat 4 Storm Surge": stormSurge
+};
+
+L.control.layers(toggleMaps, overlayMaps).addTo(mymap);
 
 
 //I'm not turning location on snce we'll be demonstrating in MD
