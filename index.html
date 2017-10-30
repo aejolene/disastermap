@@ -86,7 +86,9 @@
 		id: 'mapbox.streets'
 	}).addTo(mymap);
 
-	/*var url="https://opencontext.org/subjects-search/United+States/Virginia||Maryland.json?response=geo-facet&proj=52-digital-index-of-north-american-archaeology-dinaa&prop=oc-gen-cat-loc-or-context---oc-gen-cat-site&godeep=11";
+	/* This is data directly from the Open Context API without joins to NRHP evaluation information
+
+	var url="https://opencontext.org/subjects-search/United+States/Virginia||Maryland.json?response=geo-facet&proj=52-digital-index-of-north-american-archaeology-dinaa&prop=oc-gen-cat-loc-or-context---oc-gen-cat-site&godeep=11";
    $.getJSON(url,function(dinaaData){
       // add GeoJSON layer to the map once the file is loaded
       L.geoJson(dinaaData, {
@@ -160,10 +162,9 @@ var stormSurgeData = $.getJSON("storm_surge.geojson",function(data){
 
 L.control.layers(toggleMaps, overlayMaps).addTo(mymap);
 
+/* Uncomment this to turn on geolocation for mobile
 mymap.locate({setView: true, maxZoom: 16});
-
-
-//I'm not turning location on snce we'll be demonstrating in MD
+*/
 </script>
 
 
