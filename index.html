@@ -28,8 +28,8 @@
 
     #titlebox {
 			position: absolute;
-			bottom: 12px;
-			left: 50px;
+			bottom: 36px;
+			left: 36px;
 			/* height: 150px; */
 			z-index: 5;
 			margin-top: 10px;
@@ -159,6 +159,8 @@ var stormSurgeData = $.getJSON("storm_surge.geojson",function(data){
 };
 
 L.control.layers(toggleMaps, overlayMaps).addTo(mymap);
+
+mymap.locate({setView: true, maxZoom: 16});
 
 
 //I'm not turning location on snce we'll be demonstrating in MD
