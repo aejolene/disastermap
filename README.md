@@ -2,10 +2,10 @@
 Proof of concept map for disaster response and archaeology. For Keeping History Above Water conference, 2017
 
 
-#Archaeology Disaster Response
+# Archaeology Disaster Response
 A demonstration map for Keeping History Above Water Conference, November 1, 2017
 						
-###Using the Digital Index of North American Archaeology for Rapid Disaster Response and Reporting
+### Using the Digital Index of North American Archaeology for Rapid Disaster Response and Reporting
 
 **Jolene Smith, David G. Anderson, Eric Kansa, Joshua Wells, and Stephen Yerka**
 
