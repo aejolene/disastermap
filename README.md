@@ -21,7 +21,7 @@ In order to create the DINAA system, the project aggregates and renders interope
 
 Disaster response models across a wide variety of needs and disciplines all converge on the importance and necessity of topical tools for the government and public to interact and communicate regarding developments and needs within particular arenas. Thus, while long-range planning is critical, climate impacts often necessitate rapid response by local, state, and federal entities. Simple awareness of the presence of sensitive historic resources within an impacted area can facilitate stabilization and prevent further, inadvertent damage during disaster response efforts. The non-sensitive nature of DINAA data allows for open distribution without fear of endangering sites to looting and without the time consuming process of vetting authorized information viewers. A set of comparative use scenarios for DINAA to facilitate intragovernmental, intergovernmental, and government-to-public communications and example response activities will be discussed.
 
-[Digital Index of North American Archaeology](http://ux.opencontext.org/archaeology-site-data/)
-[Open Context](https://opencontext.org/)
+[Digital Index of North American Archaeology](http://ux.opencontext.org/archaeology-site-data/) 
+[Open Context](https://opencontext.org/) 
 [Virginia Department of Historic Resources](http://www.dhr.virginia.gov/)
 
