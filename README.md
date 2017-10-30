@@ -1,5 +1,5 @@
 # disastermap
-Proof of concept map for disaster response and archaeology. For Keeping History Above Water conference, 2017
+Proof of concept map for disaster response and archaeology. For Keeping History Above Water conference, 2017. Demonstration available at [https://aejolene.github.io/disastermap/](https://aejolene.github.io/disastermap/)
 
 
  
