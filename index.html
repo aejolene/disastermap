@@ -136,7 +136,7 @@
 	        return { color: "#999", weight: 1, fillColor: fillColor, fillOpacity: .3 };
 	      },
 	      onEachFeature: function( feature, layer ){
-	              layer.bindPopup( "<strong>" + feature.properties.count + "</strong>" + " archaeological sites in this region" + "</br>" + "<strong>" + feature.properties.["count eligible"] + "</strong>" + " sites eligible for NRHP listing")
+	              layer.bindPopup( "<strong>" + feature.properties.count + "</strong>" + " archaeological sites in this region" + "</br>" + "<strong>" + feature.properties["count eligible"] + "</strong>" + " sites eligible for NRHP listing")
 	            }
 						})
 				.addTo(siteCounts);
